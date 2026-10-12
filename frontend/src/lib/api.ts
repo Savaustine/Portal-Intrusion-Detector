@@ -1,4 +1,7 @@
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/+$/, '');
+const BASE_URL = API_URL
+  ? API_URL.endsWith('/api') ? API_URL : `${API_URL}/api`
+  : '/api';
 
 export interface RegisterData {
   reg_number: string;

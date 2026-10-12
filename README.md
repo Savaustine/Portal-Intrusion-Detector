@@ -30,7 +30,8 @@ can also be opened through a LAN hostname or IP without the browser trying to
 contact its own `localhost`. The backend must be running for sign-in and
 onboarding to work.
 
-For a separately hosted frontend, set `VITE_API_URL` to the backend API base URL
-(including `/api`) when building the frontend, and set the backend's
-`SENTRYPORTAL_CORS_ORIGINS` environment variable to a comma-separated list of
-allowed frontend origins.
+For a separately hosted frontend, set `VITE_API_URL` to the backend origin
+(for example, `https://portal-intrusion-detector.onrender.com`) when building
+the frontend. The frontend appends `/api` automatically. Configure the backend's
+`SENTRYPORTAL_CORS_ORIGINS` environment variable with a comma-separated list of
+deployed frontend origins; localhost origins remain allowed for development.

@@ -43,11 +43,12 @@ default_origins = [
     "http://127.0.0.1:5173",
     "http://127.0.0.1:3000",
 ]
-origins = [
+configured_origins = [
     origin.strip()
     for origin in os.getenv("SENTRYPORTAL_CORS_ORIGINS", "").split(",")
     if origin.strip()
-] or default_origins
+]
+origins = list(dict.fromkeys([*default_origins, *configured_origins]))
 
 app.add_middleware(
     CORSMiddleware,
